@@ -1,0 +1,29 @@
+AC_INIT(GNU_Ballistics.cpp)
+AM_INIT_AUTOMAKE(gebc,1.07)
+AC_PROG_CXX
+AC_CHECK_HEADERS(math.h)
+AC_CHECK_HEADERS(cmath.h)
+AC_CHECK_HEADERS(stdlib.h)
+AC_CHECK_HEADERS(stdio.h)
+AC_C_CONST
+AC_C_INLINE
+AC_FUNC_MALLOC
+AC_PROG_INSTALL
+AC_PROG_RANLIB
+
+# Check for fltk
+AC_PATH_PROG(FLTKCONFIG,fltk-config)
+if test "x$FLTKCONFIG" = x; then
+	echo "fltk-config not found"
+	exit 1
+fi
+
+# We should check for HPDF library here... but how.
+
+CXX_FLAGS="`$FLTKCONFIG --use-images --cxxflags` $CXXFLAGS"
+LIBS="`$FLTKCONFIG --use-images --ldflags` $LIBS"
+
+AC_OUTPUT([Makefile lib/ballistics/Makefile])
+
+
+

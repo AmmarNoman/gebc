@@ -1,0 +1,12 @@
+
+Instructions for building from source:
+
+> ./configure
+> make
+> cp gebc.exe ../
+> cd ../
+> ./gebc.exe
+
+
+Unix / Linux will not have the .exe extensions.
+
